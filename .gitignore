@@ -2,3 +2,5 @@
 .project
 .settings/
 generated/
+conf/node/
+conf/registry/

@@ -10,10 +10,10 @@ public class SMSServiceMgrServerIceBox implements Service {
 	
 	@Override
 	public void start(String name, Communicator communicator, String[] arg2) {
-		_adapter = communicator.createObjectAdapter("SMSServiceAdapter");
+		_adapter = communicator.createObjectAdapter(name);
 		_adapter.add(new SMSServiceMgrImpl(), communicator.stringToIdentity(name));
-		_adapter.activate();
 		System.out.println("SMSService start success ...");
+		_adapter.activate();
 	}
 
 	@Override

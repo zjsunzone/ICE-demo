@@ -10,7 +10,6 @@ public class OnlineBookMgrServiceIceBox implements Service {
 
 	// 定义ObjectAdapter
 	private ObjectAdapter _adapter ; 
-	public static final String objectAdapterStr = "OnlineBookAdapter";
 	
 	/**
 	 * IceBox 服务启动初始化
@@ -20,21 +19,13 @@ public class OnlineBookMgrServiceIceBox implements Service {
 	@Override
 	public void start(String name, Communicator communicator, String[] args) {
 		
-		System.out.println("start args[name] -> "+name);
-		System.out.println("args -> " + args[0]);
-		
-		String objectStr = "OnlineBookService";
-		
 		// 1、创建objectAdapter，name 为定义IceBox中定义的service名称
-		_adapter = communicator.createObjectAdapter(objectAdapterStr);
-		System.out.println("--------- step02 ------------");
-		
+		_adapter = communicator.createObjectAdapter(name);
 		// 2、创建servant并激活
 		_adapter.add(new OnlineBookMgrImpl(), communicator.stringToIdentity(name));
-		
+		System.out.println("OnlineBookIceBox start success....");
 		// 3、激活
 		_adapter.activate();
-		System.out.println("start ....");
 	}
 
 	@Override

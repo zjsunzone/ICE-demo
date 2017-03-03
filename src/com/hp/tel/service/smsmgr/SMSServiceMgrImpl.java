@@ -19,7 +19,7 @@ public class SMSServiceMgrImpl extends _SMSServiceDisp {
 		if(msg.startsWith("book")){
 			try {
 				System.out.println(__current.adapter.getName());
-				Ice.ObjectPrx proxy = __current.adapter.getCommunicator().stringToProxy("OnlineBookService");
+				Ice.ObjectPrx proxy = __current.adapter.getCommunicator().stringToProxy("OnlineBookService@OnlilneBookAdapter");
 				OnlineBookPrx onlineBook = OnlineBookPrxHelper.checkedCast(proxy);
 				Message message = new Message();
 				message.content = "成功书名" ;
